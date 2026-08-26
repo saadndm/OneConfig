@@ -16,7 +16,7 @@ public class Mixin_SkiaFrame {
     @Shadow
     private int framebufferHeight;
 
-    @Inject(method = "refreshFramebufferSize", at = @At("TAIL"))
+    @Inject(method = "onFramebufferResize", at = @At("TAIL"))
     void impl$onResize(CallbackInfo ci) {
         SkiaCtx.INSTANCE.recreateSurface(this.framebufferWidth, this.framebufferHeight);
     }
